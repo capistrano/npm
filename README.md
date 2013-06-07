@@ -53,4 +53,4 @@ Now when deploying, `npm install` will detect the `npm-shrinkwrap.json` file and
 ### Configuration
 
 * `npm_path`: Path to npm bin on the remote server. Defaults to just `npm` as its assumed to be in your `$PATH`.
-* `npm_options`: Options for `npm` command. Defaults to an empty string.
+* `npm_options`: Options for `npm` command. Defaults to `--production` to avoid installing dev dependencies.

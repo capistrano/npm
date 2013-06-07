@@ -1,6 +1,6 @@
 Capistrano::Configuration.instance(true).load do
   set :npm_path,    'npm'
-  set :npm_options, nil
+  set :npm_options, '--production'
 
   namespace :npm do
     desc 'Runs npm install.'
