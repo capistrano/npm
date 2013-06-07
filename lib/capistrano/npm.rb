@@ -2,6 +2,8 @@ Capistrano::Configuration.instance(true).load do
   set :npm_path,    'npm'
   set :npm_options, '--production'
 
+  depend :remote, :command, npm_path
+
   namespace :npm do
     desc 'Runs npm install.'
     task :install, :roles => :app, :except => { :no_release => true } do
