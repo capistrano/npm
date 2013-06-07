@@ -30,13 +30,7 @@ Add the task to your `deploy.rb`:
 after 'deploy:finalize_update', 'npm:install'
 ```
 
-To speed up your deployments, you should also add `node_modules` to Capistrano's `shared_children` variable:
-
-```ruby
-set :shared_children, shared_children + %w{node_modules}
-```
-
-This will symlink `node_modules` from the `shared` directory so it isn't re-created from scratch each deploy.
+### Optimize
 
 Ideally when using npm, you should add `node_modules` to your `.gitignore` file to keep them out of your repository.
 
@@ -49,6 +43,10 @@ Now when deploying, `npm install` will detect the `npm-shrinkwrap.json` file and
 ### Tasks
 
 * `npm:install`: Runs `npm install`.
+
+### Dependencies
+
+This extension also adds the `npm` command as a Capistrano dependency. Meaning when you run `cap deploy:check`, it will make sure the `npm` command exists.
 
 ### Configuration
 
