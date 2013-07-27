@@ -1,6 +1,6 @@
 Capistrano::Configuration.instance(true).load do
   set :npm_path,    'npm'
-  set :npm_options, '--production'
+  set :npm_options, '--production --silent'
 
   depend :remote, :command, npm_path
 

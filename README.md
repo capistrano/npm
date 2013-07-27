@@ -13,7 +13,7 @@ gem install capistrano-npm
 Or if you're using Bundler, add it to your `Gemfile`:
 
 ```ruby
-gem 'capistrano-npm', github: 'swalkinshaw/npm'
+gem 'capistrano-npm'
 ```
 
 2. Add to `Capfile` or `config/deploy.rb`:
@@ -51,4 +51,4 @@ This extension also adds the `npm` command as a Capistrano dependency. Meaning w
 ### Configuration
 
 * `npm_path`: Path to npm bin on the remote server. Defaults to just `npm` as its assumed to be in your `$PATH`.
-* `npm_options`: Options for `npm` command. Defaults to `--production` to avoid installing dev dependencies.
+* `npm_options`: Options for `npm` command. Defaults to `--production --silent` to avoid installing dev dependencies.
