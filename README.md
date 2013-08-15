@@ -30,6 +30,12 @@ Add the task to your `deploy.rb`:
 after 'deploy:finalize_update', 'npm:install'
 ```
 
+And `npm install` will be run in your in your `latest_release` path on `deploy:finalize_update`.
+
+### Limitations
+
+There's currently no way to specify a path other than the default `latest_releast` where npm installs. This will be fixed in a future version.
+
 ### Optimize
 
 Ideally when using npm, you should add `node_modules` to your `.gitignore` file to keep them out of your repository.
