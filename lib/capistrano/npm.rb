@@ -7,7 +7,7 @@ Capistrano::Configuration.instance(true).load do
   namespace :npm do
     desc 'Runs npm install.'
     task :install, :roles => :app, :except => { :no_release => true } do
-      try_sudo "cd #{latest_release} && #{npm_path} #{npm_options} install"
+      run "cd #{latest_release} && #{try_sudo} #{npm_path} #{npm_options} install"
     end
   end
 end
