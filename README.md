@@ -1,60 +1,40 @@
-# capistrano-npm
+# Capistrano::npm
 
-capistrano-npm is a [Capistrano](https://github.com/capistrano/capistrano) extension that will let you run [npm](https://npmjs.org/) during your deploy process.
+npm for support for Capistrano 3.x
 
 ## Installation
 
-1. Install the Gem
+Add this line to your application's Gemfile:
 
-```bash
-gem install capistrano-npm
-```
+    gem 'capistrano-npm'
+    gem 'capistrano', github: 'capistrano/capistrano', branch: 'v3'
 
-Or if you're using Bundler, add it to your `Gemfile`:
+And then execute:
 
-```ruby
-gem 'capistrano-npm'
-```
+    $ bundle
 
-2. Add to `Capfile` or `config/deploy.rb`:
+Or install it yourself as:
 
-```ruby
-require 'capistrano/npm'
-```
+    $ gem install capistrano-npm
 
 ## Usage
 
-Add the task to your `deploy.rb`:
+Require in `Capfile` to use the default task:
 
-```ruby
-after 'deploy:finalize_update', 'npm:install'
-```
+    require 'capistrano/npm'
 
-And `npm install` will be run in your in your `latest_release` path on `deploy:finalize_update`.
+The task will run before `deploy:updated` as part of Capistrano's default deploy,
+or can be run in isolation with `cap production npm:install`
 
-### Limitations
+Configurable options, shown here with defaults:
 
-There's currently no way to specify a path other than the default `latest_releast` where npm installs. This will be fixed in a future version.
+    set :npm_flags, '--production --silent'
+    set :npm_roles, :all
 
-### Optimize
+## Contributing
 
-Ideally when using npm, you should add `node_modules` to your `.gitignore` file to keep them out of your repository.
-
-Since `npm install` does not guarantee that you will get the same package versions when deploying, you should use `npm shrinkwrap` (https://npmjs.org/doc/shrinkwrap.html) first.
-
-Running `npm shrinkwrap` will created a `npm-shrinkwrap.json` file that locks down the dependency versions. Check this file into your repository.
-
-Now when deploying, `npm install` will detect the `npm-shrinkwrap.json` file and use that to install the packages.
-
-### Tasks
-
-* `npm:install`: Runs `npm install`.
-
-### Dependencies
-
-This extension also adds the `npm` command as a Capistrano dependency. Meaning when you run `cap deploy:check`, it will make sure the `npm` command exists.
-
-### Configuration
-
-* `npm_path`: Path to npm bin on the remote server. Defaults to just `npm` as its assumed to be in your `$PATH`.
-* `npm_options`: Options for `npm` command. Defaults to `--production --silent` to avoid installing dev dependencies.
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
