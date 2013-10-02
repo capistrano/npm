@@ -12,7 +12,8 @@ namespace :npm do
   task :install do
     on roles fetch(:npm_roles) do
       within release_path do
-        execute :npm, fetch(:npm_flags)
+        execute :npm, "install",
+         fetch(:npm_flags)
       end
     end
   end
