@@ -30,12 +30,12 @@ require 'capistrano/npm'
 The task will run before `deploy:updated` as part of Capistrano's default deploy,
 or can be run in isolation with `cap production npm:install`
 
-Configurable options, shown here with their defaults:
+Configurable options:
 
 ```ruby
-set :npm_target_path, nil
-set :npm_flags, '--production --silent'
-set :npm_roles, :all
+set :npm_target_path, release_path.join('subdir') # default not set
+set :npm_flags, '--production --silent'           # default
+set :npm_roles, :all                              # default
 ```
 
 ## Contributing

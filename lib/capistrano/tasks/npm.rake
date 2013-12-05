@@ -12,7 +12,7 @@ namespace :npm do
     DESC
   task :install do
     on roles fetch(:npm_roles) do
-      within fetch(:npm_target_path, :release_path) do
+      within fetch(:npm_target_path, release_path) do
         execute :npm, 'install', fetch(:npm_flags)
       end
     end
@@ -23,7 +23,6 @@ end
 
 namespace :load do
   task :defaults do
-    set :npm_target_path, nil
     set :npm_flags, '--production --silent'
     set :npm_roles, :all
   end
