@@ -1,6 +1,6 @@
 # Capistrano::npm
 
-npm for support for Capistrano 3.x
+npm support for Capistrano 3.x
 
 ## Installation
 
