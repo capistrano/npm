@@ -33,7 +33,7 @@ or can be run in isolation with `cap production npm:install`
 Configurable options:
 
 ```ruby
-set :npm_target_path, release_path.join('subdir') # default not set
+set :npm_target_path, -> { release_path.join('subdir') } # default not set
 set :npm_flags, '--production --silent'           # default
 set :npm_roles, :all                              # default
 ```
