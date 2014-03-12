@@ -7,7 +7,7 @@ npm support for Capistrano 3.x
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'capistrano', '~> 3.0.0'
+gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-npm'
 ```
 
