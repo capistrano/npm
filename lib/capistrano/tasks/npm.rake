@@ -42,6 +42,22 @@ namespace :npm do
       end
     end
   end
+
+  desc <<-DESC
+        Rebuild via npm. This command is executed within the same context \
+        as npm install using the npm_roles and npm_target_path \
+        variables.
+
+        This task is strictly opt-in. The main reason you'll want to run this \
+        would be after changing npm versions on the server.
+    DESC
+  task :rebuild do
+    on roles fetch(:npm_roles) do
+      within fetch(:npm_target_path, release_path) do
+        execute :npm, 'rebuild'
+      end
+    end
+  end
 end
 
 namespace :load do
