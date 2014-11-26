@@ -2,12 +2,12 @@ namespace :npm do
   desc <<-DESC
         Install the project dependencies via npm. By default, devDependencies \
         will not be installed. The install command is executed \
-        with the --production and --silent flags.
+        with the --production, --silent and --no-spin flags.
 
         You can override any of these defaults by setting the variables shown below.
 
           set :npm_target_path, nil
-          set :npm_flags, '--production --silent'
+          set :npm_flags, '--production --silent --no-spin'
           set :npm_roles, :all
     DESC
   task :install do
@@ -62,7 +62,7 @@ end
 
 namespace :load do
   task :defaults do
-    set :npm_flags, '--production --silent'
+    set :npm_flags, %w(--production --silent --no-spin)
     set :npm_prune_flags, '--production'
     set :npm_roles, :all
   end

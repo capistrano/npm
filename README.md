@@ -34,13 +34,13 @@ Configurable options:
 
 ```ruby
 set :npm_target_path, -> { release_path.join('subdir') } # default not set
-set :npm_flags, '--production --silent'           # default
+set :npm_flags, '--production --silent --no-spin' # default
 set :npm_roles, :all                              # default
 ```
 
 ### Dependencies
 
-npm allows for normal `dependencies` and `devDependencies`. By default this gem uses `'--production --silent'` as the install flags which will **only** install `dependencies` and skip `devDependencies`. If you want your `devDependencies` installed as well, then remove '--production`.
+npm allows for normal `dependencies` and `devDependencies`. By default this gem uses `'--production --silent --no-spin'` as the install flags which will **only** install `dependencies` and skip `devDependencies`. If you want your `devDependencies` installed as well, then remove '--production`.
 
 ## Contributing
 
