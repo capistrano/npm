@@ -9,11 +9,14 @@ namespace :npm do
           set :npm_target_path, nil
           set :npm_flags, '--production --silent --no-spin'
           set :npm_roles, :all
+          set :npm_env_variables, {}
     DESC
   task :install do
     on roles fetch(:npm_roles) do
       within fetch(:npm_target_path, release_path) do
-        execute :npm, 'install', fetch(:npm_flags)
+        with fetch(:npm_env_variables, {}) do
+          execute :npm, 'install', fetch(:npm_flags)
+        end
       end
     end
   end
@@ -54,7 +57,9 @@ namespace :npm do
   task :rebuild do
     on roles fetch(:npm_roles) do
       within fetch(:npm_target_path, release_path) do
-        execute :npm, 'rebuild'
+        with fetch(:npm_env_variables, {}) do
+          execute :npm, 'rebuild'
+        end
       end
     end
   end

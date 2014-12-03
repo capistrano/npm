@@ -36,6 +36,7 @@ Configurable options:
 set :npm_target_path, -> { release_path.join('subdir') } # default not set
 set :npm_flags, '--production --silent --no-spin' # default
 set :npm_roles, :all                              # default
+set :npm_env_variables, {}                        # default
 ```
 
 ### Dependencies
