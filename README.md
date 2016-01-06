@@ -41,7 +41,7 @@ set :npm_env_variables, {}                        # default
 
 ### Dependencies
 
-npm allows for normal `dependencies` and `devDependencies`. By default this gem uses `'--production --silent --no-spin'` as the install flags which will **only** install `dependencies` and skip `devDependencies`. If you want your `devDependencies` installed as well, then remove '--production`.
+npm allows for normal `dependencies` and `devDependencies`. By default this gem uses `'--production --silent --no-spin'` as the install flags which will **only** install `dependencies` and skip `devDependencies`. If you want your `devDependencies` installed as well, then remove `--production`.
 
 ## Contributing
 
