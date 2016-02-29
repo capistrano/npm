@@ -67,7 +67,7 @@ end
 
 namespace :load do
   task :defaults do
-    set :npm_flags, %w(--production --silent --no-spin)
+    set :npm_flags, %w(--production --silent --no-progress)
     set :npm_prune_flags, '--production'
     set :npm_roles, :all
   end
