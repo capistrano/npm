@@ -31,7 +31,7 @@ namespace :npm do
     on roles fetch(:npm_roles) do
       within fetch(:npm_target_path, release_path) do
         with fetch(:npm_env_variables, {}) do
-          execute :npm, 'build'
+          execute :npm, 'run-script', 'build'
         end
       end
     end
