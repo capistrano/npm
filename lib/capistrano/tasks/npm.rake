@@ -24,6 +24,20 @@ namespace :npm do
   before 'deploy:updated', 'npm:install'
 
   desc <<-DESC
+        Runs the build command. Completely optional. opt in with `after 'npm:instal', 'npm:build'`
+
+    DESC
+  task :build do
+    on roles fetch(:npm_roles) do
+      within fetch(:npm_target_path, release_path) do
+        with fetch(:npm_env_variables, {}) do
+          execute :npm, 'run-script', 'build'
+        end
+      end
+    end
+  end
+  
+  desc <<-DESC
         Remove extraneous packages via npm. This command is executed within \
         the same context as npm install using the npm_roles and npm_target_path \
         variables.
