@@ -37,7 +37,13 @@ set :npm_target_path, -> { release_path.join('subdir') } # default not set
 set :npm_flags, '--production --silent --no-progress'    # default
 set :npm_roles, :all                                     # default
 set :npm_env_variables, {}                               # default
+set :npm_method, 'install'                               # default 
 ```
+
+### NPM Method
+As of version 5.7.0 of npm, a new install method (`ci`) was introduced which utilises
+the `package-lock.json` file. Change `npm_method` to `ci` in order to use make
+use of the improved installation method.
 
 ### Dependencies
 
