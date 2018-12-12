@@ -16,7 +16,7 @@ namespace :npm do
     on roles fetch(:npm_roles) do
       within fetch(:npm_target_path, release_path) do
         with fetch(:npm_env_variables, {}) do
-          execute :npm, fetch(:npm_method, 'install'), fetch(:npm_flags)
+          execute :npm, fetch(:npm_method), fetch(:npm_flags)
         end
       end
     end
@@ -71,5 +71,6 @@ namespace :load do
     set :npm_flags, %w(--production --silent --no-progress)
     set :npm_prune_flags, '--production'
     set :npm_roles, :all
+    set :npm_method, 'install'
   end
 end
