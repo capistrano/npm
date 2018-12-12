@@ -39,6 +39,20 @@ set :npm_roles, :all                                     # default
 set :npm_env_variables, {}                               # default
 ```
 
+Alternatively, if you want to have control on the execution of npm tasks
+
+```ruby
+# Capfile
+require capistrano/npm/without_hooks
+```
+
+You can then add the hooks on a per deploy script basis
+
+```ruby
+# config/deploy/my_stage_with_npm.rb
+before 'deploy:updated', 'npm:install'
+```
+
 ### Dependencies
 
 npm allows for normal `dependencies` and `devDependencies`. By default this gem uses `'--production --silent --no-progress'` as the install flags which will **only** install `dependencies` and skip `devDependencies`. If you want your `devDependencies` installed as well, then remove `--production`.
